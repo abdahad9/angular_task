@@ -1,0 +1,45 @@
+/* Center the container div */
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust this value as needed to control the vertical centering */
+  }
+  
+  /* Style the h1 */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the input */
+  input {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+  }
+  
+  /* Style the autocomplete list */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    max-width: 300px;
+  }
+  
+  /* Style the autocomplete list items */
+  li {
+    padding: 8px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background-color: #e0e0e0;
+  }
+  

@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Instagram User Lookup</h1>
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="onSearchInput()"
+    placeholder="Search for Instagram users..."
+  />
+  <div class="autocomplete" *ngIf="showAutocomplete">
+    <div *ngFor="let user of autocompleteUsers" (click)="onAutocompleteSelect(user)">
+      {{ user.username }}
+    </div>
+  </div>
+
+  <div *ngIf="selectedUser" class="user-details">
+    <div class="profile-pic">
+      <img [src]="selectedUser.profile_pic_url" alt="Profile Pic" />
+    </div>
+    <div class="user-info">
+      <h2>{{ selectedUser.fullname }}</h2>
+      <p>Username: {{ selectedUser.username }}</p>
+      <p>Followers: {{ selectedUser.followers_count }}</p>
+    </div>
+    <div class="recent-posts">
+      <h3>Recent Posts</h3>
+      <div *ngFor="let post of selectedUser.recent_posts">
+        <p>Post Type: {{ post.post_type }}</p>
+        <p>Likes: {{ post.likes_count }}</p>
+        <p>Comments: {{ post.comments_count }}</p>
+        <p>Views: {{ post.views_count }}</p>
+        <a [href]="post.post_link" target="_blank">Post Link</a>
+        <img [src]="post.image_url" alt="Post Image" />
+      </div>
+    </div>
+  </div>
+</div>
