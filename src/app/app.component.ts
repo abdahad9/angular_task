@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
   fetchAllUsers() {
     this.http
-      .get<UserAutocompleteResponse>('https://imai.co/api/dict/users/?q=q&limit=10&type=search&platform=instagram', {
+      .get<UserAutocompleteResponse>('https://imai.co/api/dict/users/?q=q&limit=10000&type=search&platform=instagram', {
         headers: {
           'accept': 'application/json',
           'authkey': 'hWuFhhPVij'
