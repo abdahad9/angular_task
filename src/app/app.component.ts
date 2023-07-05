@@ -4,7 +4,7 @@ import { User } from './user.model';
 
 interface UserAutocompleteResponse {
   success: boolean;
-  data: User[]; // Assuming that the API response has a "data" field containing an array of User objects
+  data: User[];
 }
 
 @Component({
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   autocompleteUsers: User[] = [];
   selectedUser: User | null = null;
   userDetails: any | null = null;
+  isLoading: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
   }
 
   fetchAllUsers() {
+    this.isLoading = true;
     this.http
       .get<UserAutocompleteResponse>('https://imai.co/api/dict/users/?q=q&limit=1000&type=search&platform=instagram', {
         headers: {
@@ -35,6 +37,7 @@ export class AppComponent implements OnInit {
         }
       })
       .subscribe((response) => {
+        this.isLoading = false;
         this.allUsers = response.data;
       });
   }
@@ -56,7 +59,7 @@ export class AppComponent implements OnInit {
     this.searchTerm = user.username;
     this.showAutocomplete = false;
     this.selectedUser = null; // Reset selectedUser when a new user is selected.
-
+    this.isLoading = true;
     // Fetch user details using the provided API endpoint
     this.http
       .get<any>(`https://imai.co/api/raw/ig/user/feed/?url=${user.username}`, {
@@ -66,11 +69,12 @@ export class AppComponent implements OnInit {
         }
       })
       .subscribe((data) => {
-        console.log('selectedUser');
-        console.log(data);
+        this.isLoading = false;
+        // console.log('selectedUser');
+        // console.log(data);
         this.userDetails = data;
         this.selectedUser = {
-          ...user, // Copy the properties from the selected user
+          ...user,
           profile_pic_url: data.items[0].user.profile_pic_url,
           followers_count: data.followers_count,
           fullname: data.items[0].user.full_name,
