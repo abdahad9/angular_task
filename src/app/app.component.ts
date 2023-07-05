@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
           ...user, // Copy the properties from the selected user
           profile_pic_url: data.items[0].user.profile_pic_url,
           followers_count: data.followers_count,
-          fullname: data.fullname,
+          fullname: data.items[0].user.full_name,
           recent_posts: data.recent_posts
         };
       });

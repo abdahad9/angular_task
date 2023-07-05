@@ -7,25 +7,31 @@
     placeholder="Search for Instagram users..."
   />
   <div class="autocomplete" *ngIf="showAutocomplete">
-    <div *ngFor="let user of autocompleteUsers" (click)="onAutocompleteSelect(user)">
-      {{ user.username }}
+    <div *ngFor="let user of autocompleteUsers" (click)="onAutocompleteSelect(user)" class="dropdown">
+      <div class="profile-pic" style="display: flex;">
+        <img style="width: 40px; height: 40px; margin-right: 12px; margin-bottom: 0px;" [src]="user.picture" alt="Profile Pic"/>
+        {{ user.username }}
+      </div>
     </div>
   </div>
 
   <div *ngIf="selectedUser" class="user-details" style="width: 30%;">
     <div style="display: flex">
       <div class="profile-pic">
-        <img src="assets/test.png" alt="Profile Pic" />
+        <img [src]="selectedUser.picture" alt="Profile Pic" />
       </div>
       <div class="user-info">
         <h2>{{ selectedUser.fullname }}</h2>
-        <h3 class="name">{{ selectedUser.username }}</h3>
+        <span *ngIf="selectedUser.is_verified">
+          <img style="width: 20px;" src="assets/verfi.png" alt="Verified Icon" />
+        </span>
+        <!-- <h3 class="name">{{ selectedUser.username }}</h3> -->
         <div style="display: flex; justify-content: space-between; width: 150%;">
-          <p>Posts: {{ selectedUser.followers_count }}</p>
-          <p>Followers: {{ selectedUser.followers_count }}</p>
-          <p>Following: {{ selectedUser.followers_count }}</p>
+          <p>Posts {{ selectedUser.followers_count }}</p>
+          <p> <strong>{{ selectedUser.followers }}</strong>  Followers</p>
+          <p>Following {{ selectedUser.followers_count }}</p>
         </div>
-        <!-- <h3>{{ selectedUser.username }}</h3> -->
+        <h3 class="name">{{ selectedUser.username }}</h3>
       </div>
     </div>
     <div class="recent-posts">
