@@ -1,45 +1,57 @@
-/* Center the container div */
-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Adjust this value as needed to control the vertical centering */
-  }
-  
-  /* Style the h1 */
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  /* Style the input */
-  input {
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 300px;
-  }
-  
-  /* Style the autocomplete list */
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
-    max-width: 300px;
-  }
-  
-  /* Style the autocomplete list items */
-  li {
-    padding: 8px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  li:hover {
-    background-color: #e0e0e0;
-  }
-  
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+}
+
+.autocomplete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.autocomplete div {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.user-details {
+  margin-top: 30px;
+}
+
+.profile-pic img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.recent-posts div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.recent-posts img {
+  max-width: 100%;
+  margin-top: 10px;
+}
+.user-info{
+  margin-left: 35px;
+}
+.name{
+  font-family: system-ui;
+  font-weight: 400;
+}
